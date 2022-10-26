@@ -8,16 +8,15 @@ I only have tested on Linux, but this should work flawlessly on windows if you [
 
 ### Requirements : 
 - Python 3+
-- python module numpy
+- Python module `numpy`
 
 ### Usage :
 
-Put each letter followed by its number of occurrences, in sequence between quotes
-
+Put all letters in sequence, between quotes as first argument of `grumble.py`
 
 Example usage : 
 ```bash
-$ python3 grumble.py "s2e2i2o1l2n1t1v1a1j1r1c1"
+$ python3 grumble.py "eiiolasventrsjlc"
 
 [...]
 21 enjoliverai
