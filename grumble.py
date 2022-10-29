@@ -83,11 +83,15 @@ result = p.read()
 p.close()
 
 words = np.array(result.split("\n"))
+# words = np.array(np.char.split(np.array([result]))[0])
 
-tab = np.empty(len(words), dtype=np.int8)
+tab = np.empty(len(words), dtype=np.uint8)
 for i, res in enumerate(words):
     tab[i] = score(res)
 
 # Print last 300 best words & their score
-for i, res in enumerate(words[tab.argsort()][-300:]):
-    print(tab[tab.argsort()][-300:][i], res)
+tab_sort = tab.argsort()[-300:]
+w = words[tab_sort]
+t = tab[tab_sort]
+for i, res in enumerate(w):
+    print(t[i], res)
