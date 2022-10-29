@@ -4,13 +4,17 @@ import numpy as np
 
 def score(string):
     scores = {
+        "b": 3,
         "c": 3,
         "d": 2,
+        "g": 2,
+        "h": 4,
         "j": 8,
-        "v": 4,
         "m": 2,
         "p": 3,
-        "q": 8,}
+        "q": 8,
+        "v": 4,
+        }
 
     sc = 0
     for l in string:
@@ -61,10 +65,14 @@ for i, l in enumerate(letters):
         l = "[i|î]"
     elif l == "a":
         l = "[a|à|â]"
+    elif l == "u":
+        l = "[u|ù|û]"
+    elif l == "o":
+        l = "[o|ô]"
     maxs.append(f"({l}.*){{{int(counts[i])+1}}}")
 
 # Print longuest words : awk '{{ print length(), $0 | "sort -n" }}'
-command = f"""cat dictionary.csv | grep -Ev "{"|".join(unused_letters)}" | sed "/-/d;/ .*/d;/\'.*/d;/’.*/d" | grep -Ev "{"|".join(maxs)}" """
+command = f"""grep -Ev "{"|".join(unused_letters)}" dictionary.csv | grep -Ev "\.|-| |\'|’" | grep -Ev "{"|".join(maxs)}" """
 # Explanation :
 # 1. grep  Invert search to exclude all words with non used letters of dictionnary.csv
 # 2. sed   Remove all dictionnary artifacts, that are not actual acceptable words
