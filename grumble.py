@@ -61,17 +61,20 @@ for l in letters:
     unused_letters = unused_letters.replace(l, "")
 
 maxs = []
+# Should one day support œ along with æ
 for i, l in enumerate(letters):
     if l == "e":
-        l = "[e|é|è|ê]"
+        l = "[e|é|è|ê|ë]"
     elif l == "i":
-        l = "[i|î]"
+        l = "[i|î|ï]"
     elif l == "a":
-        l = "[a|à|â]"
+        l = "[a|à|â|ä]"
     elif l == "u":
-        l = "[u|ù|û]"
+        l = "[u|ù|û|ü]"
     elif l == "o":
-        l = "[o|ô]"
+        l = "[o|ô|ö]"
+    elif l == "c":
+        l = "[c|ç]"
     maxs.append(f"({l}.*){{{int(counts[i])+1}}}")
 
 # Print longuest words : awk '{{ print length(), $0 | "sort -n" }}'
