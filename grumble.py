@@ -60,6 +60,9 @@ unused_letters = alphabet
 for l in letters:
     unused_letters = unused_letters.replace(l, "")
 
+unused_letters = unused_letters.replace("e", "eéèêë").replace("i", "iîï").replace("a", "aàâä")
+unused_letters = unused_letters.replace("u", "uùûü").replace("o", "oôö").replace("c", "cç")
+
 maxs = []
 # Should one day support œ along with æ
 for i, l in enumerate(letters):
@@ -78,7 +81,7 @@ for i, l in enumerate(letters):
     maxs.append(f"({l}.*){{{int(counts[i])+1}}}")
 
 # Print longuest words : awk '{{ print length(), $0 | "sort -n" }}'
-command = f"""grep -Ev "{"|".join(unused_letters)}" dictionary.csv | grep -Ev "\.|-| |\'|’" | grep -Ev "{"|".join(maxs)}" """
+command = f"""grep -Eiv "{"|".join(unused_letters)}" dictionary.csv | grep -Ev "\.|-| |\'|’" | grep -Eiv "{"|".join(maxs)}" """
 # Explanation :
 # 1. grep  Invert search to exclude all words with non used letters of dictionnary.csv
 # 2. sed   Remove all dictionnary artifacts, that are not actual acceptable words
