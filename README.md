@@ -30,4 +30,4 @@ $ python3 grumble.py "eiiolasventrsjlc"
 24 javelliserions
 ```
 
-> Note : Credits to [hbenbel's github](https://github.com/hbenbel/French-Dictionary.git) for the french dictionary file `dictionnary.csv`
+> Note : Credits to ["Linguistique pour le traitement des langues"](http://infolingu.univ-mlv.fr/) for the french dictionary file `dictionnary.csv`
